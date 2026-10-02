@@ -103,6 +103,54 @@ body {
   }
 }
 
+/* Progress Bar Keyframe */
+@keyframes loaderProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.animate-loaderProgress {
+  animation: loaderProgress 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Micro-interaction Button Styles */
+.btn-micro {
+  transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-micro:hover {
+  transform: translateY(-1px);
+}
+
+.btn-micro:active {
+  transform: scale(0.98);
+}
+
+/* Micro-interaction Card Hover */
+.card-hover-micro {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-hover-micro:hover {
+  transform: scale(1.008) translateY(-2px);
+}
+
+/* Navbar Initial Entrance */
+@keyframes navbarSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-navbar-slide-down {
+  animation: navbarSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* Print Stylesheet for ATS Resume */
 @media print {
   @page {
@@ -178,5 +226,6 @@ body {
     font-family: Arial, Helvetica, sans-serif !important;
   }
 }
+
 
 

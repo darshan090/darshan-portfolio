@@ -12,8 +12,12 @@ import { ContactSection } from './sections/ContactSection';
 import { CaseStudyModal } from './components/CaseStudyModal';
 import { ResumeViewerModal } from './components/ResumeViewerModal';
 import { ToastNotification } from './components/ToastNotification';
+import { InitialPageLoader } from './components/animations/InitialPageLoader';
+import { ProjectTransitionLoader } from './components/animations/ProjectTransitionLoader';
 
 export function App() {
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
+  const [isProjectLoading, setIsProjectLoading] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isCaseStudyOpen, setIsCaseStudyOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -22,26 +26,41 @@ export function App() {
     setToastMessage(message);
   };
 
+  const handleTriggerCaseStudy = () => {
+    if (isProjectLoading || isCaseStudyOpen) return;
+    setIsProjectLoading(true);
+  };
+
+  const handleProjectLoaderComplete = () => {
+    setIsProjectLoading(false);
+    setIsCaseStudyOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-[#07090e] text-slate-100 font-sans selection:bg-emerald-500/20 selection:text-emerald-400">
+      {/* Short Initial Page Entrance Loader */}
+      {isInitialLoading && (
+        <InitialPageLoader onComplete={() => setIsInitialLoading(false)} />
+      )}
+
       {/* Sticky Navigation Bar */}
       <Navbar onOpenResume={() => setIsResumeOpen(true)} />
 
       {/* Main Page Content */}
-      <main>
+      <main className={`transition-opacity duration-500 ${isInitialLoading ? 'opacity-0' : 'opacity-100'}`}>
         <HeroSection 
           onOpenResume={() => setIsResumeOpen(true)} 
-          onOpenCaseStudy={() => setIsCaseStudyOpen(true)} 
+          onOpenCaseStudy={handleTriggerCaseStudy} 
         />
         
         <AboutSection />
         
         <ExperienceSection 
-          onOpenCaseStudy={() => setIsCaseStudyOpen(true)} 
+          onOpenCaseStudy={handleTriggerCaseStudy} 
         />
         
         <ProjectsSection 
-          onOpenCaseStudy={() => setIsCaseStudyOpen(true)} 
+          onOpenCaseStudy={handleTriggerCaseStudy} 
         />
         
         <SkillsSection />
@@ -58,6 +77,12 @@ export function App() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Project Opening Transition Loader */}
+      <ProjectTransitionLoader
+        isOpen={isProjectLoading}
+        onComplete={handleProjectLoaderComplete}
+      />
 
       {/* Modals & Overlays */}
       <CaseStudyModal 

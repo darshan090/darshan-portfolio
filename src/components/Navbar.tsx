@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 animate-navbar-slide-down ${
         isScrolled 
           ? 'bg-[#07090e]/90 backdrop-blur-md border-b border-slate-800/80 py-3 shadow-xl' 
           : 'bg-transparent py-5'
@@ -88,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`px-4 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
                     isActive
-                      ? 'bg-emerald-950/80 text-emerald-300 font-semibold border border-emerald-800/60'
+                      ? 'bg-emerald-950/80 text-emerald-300 font-semibold border border-emerald-800/60 shadow-sm'
                       : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
                   }`}
                 >
@@ -102,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           <div className="flex items-center gap-3">
             <button
               onClick={onOpenResume}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold text-white bg-slate-900 border border-slate-700 hover:border-emerald-500/50 hover:bg-slate-800 rounded-lg transition-all shadow-sm"
+              className="btn-micro inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold text-white bg-slate-900 border border-slate-700 hover:border-emerald-500/50 hover:bg-slate-800 rounded-lg transition-all shadow-sm"
               aria-label="View Resume"
             >
               <FileText className="w-3.5 h-3.5 text-emerald-400" />
