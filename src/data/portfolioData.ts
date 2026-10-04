@@ -297,7 +297,7 @@ export const EDUCATION_DATA: Education[] = [
   {
     degree: 'Master of Computer Applications (MCA)',
     institution: 'Veer Narmad South Gujarat University (VNSGU)',
-    period: '2025 - Present (First Year)',
+    period: '2026 - Present (First Year)',
     status: 'Currently Pursuing',
     isPrimary: true,
     highlights: [
@@ -308,7 +308,7 @@ export const EDUCATION_DATA: Education[] = [
   {
     degree: 'Bachelor of Computer Applications (BCA)',
     institution: 'Veer Narmad South Gujarat University (VNSGU)',
-    period: '2022 - 2025',
+    period: '2023 - 2026',
     status: 'Completed',
     isPrimary: false,
     highlights: [
